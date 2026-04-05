@@ -1,0 +1,12 @@
+{
+  "name": "bf-tree",
+  "commands": [{
+    "command_name": "bf-tree",
+    "help": "recursive directory tree listing",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "tree.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[path] [-a] [-d] [-F] [-L depth]", "optional": true}
+    ]
+  }]
+}

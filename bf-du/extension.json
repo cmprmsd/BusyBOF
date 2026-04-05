@@ -1,0 +1,12 @@
+{
+  "name": "bf-du",
+  "commands": [{
+    "command_name": "bf-du",
+    "help": "estimate disk usage",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "du.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-s] [path]", "optional": true}
+    ]
+  }]
+}

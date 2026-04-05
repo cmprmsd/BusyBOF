@@ -1,0 +1,13 @@
+{
+  "name": "bf-diff",
+  "commands": [{
+    "command_name": "bf-diff",
+    "help": "compare two files",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "diff.o"}],
+    "arguments": [
+      {"name": "file1", "type": "string", "desc": "First file"},
+      {"name": "file2", "type": "string", "desc": "Second file"}
+    ]
+  }]
+}

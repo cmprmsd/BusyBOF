@@ -1,0 +1,7 @@
+{
+  "name": "bf-logger",
+  "commands": [{"command_name": "bf-logger", "help": "write message to syslog", "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "logger.o"}],
+    "arguments": [{"name": "args", "type": "string", "desc": "[-t tag] [-p priority] <message>"}]
+  }]
+}

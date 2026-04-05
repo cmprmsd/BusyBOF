@@ -1,0 +1,12 @@
+{
+  "name": "bf-xxd",
+  "commands": [{
+    "command_name": "bf-xxd",
+    "help": "hex dump",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "xxd.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-l len] <file>"}
+    ]
+  }]
+}

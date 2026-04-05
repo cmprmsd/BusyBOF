@@ -1,0 +1,12 @@
+{
+  "name": "bf-grep",
+  "commands": [{
+    "command_name": "bf-grep",
+    "help": "search file contents",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "grep.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-inv] <pattern> <file>"}
+    ]
+  }]
+}

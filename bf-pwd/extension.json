@@ -1,0 +1,10 @@
+{
+  "name": "bf-pwd",
+  "commands": [{
+    "command_name": "bf-pwd",
+    "help": "print working directory",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "pwd.o"}],
+    "arguments": []
+  }]
+}

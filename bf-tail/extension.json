@@ -1,0 +1,12 @@
+{
+  "name": "bf-tail",
+  "commands": [{
+    "command_name": "bf-tail",
+    "help": "output last part of file",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "tail.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-n lines] <file>"}
+    ]
+  }]
+}

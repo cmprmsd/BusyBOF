@@ -1,0 +1,7 @@
+{
+  "name": "bf-od",
+  "commands": [{"command_name": "bf-od", "help": "octal dump", "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "od.o"}],
+    "arguments": [{"name": "args", "type": "string", "desc": "[-A x|o|d] [-t x1|o1|c] [-N bytes] <file>"}]
+  }]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "bf-rmdir",
+  "commands": [{
+    "command_name": "bf-rmdir",
+    "help": "remove empty directories",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "rmdir.o"}],
+    "arguments": [
+      {"name": "target", "type": "string", "desc": "Directory path(s)"}
+    ]
+  }]
+}

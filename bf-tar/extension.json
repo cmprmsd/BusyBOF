@@ -1,0 +1,7 @@
+{
+  "name": "bf-tar",
+  "commands": [{"command_name": "bf-tar", "help": "create, list, and extract tar archives", "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "tar.o"}],
+    "arguments": [{"name": "args", "type": "string", "desc": "-cf <archive> <path> | -tf <archive> | -xf <archive> [dir]"}]
+  }]
+}

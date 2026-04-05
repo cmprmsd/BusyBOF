@@ -1,0 +1,12 @@
+{
+  "name": "bf-md5sum",
+  "commands": [{
+    "command_name": "bf-md5sum",
+    "help": "compute MD5 hash",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "md5sum.o"}],
+    "arguments": [
+      {"name": "target", "type": "string", "desc": "File path(s)"}
+    ]
+  }]
+}

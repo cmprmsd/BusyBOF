@@ -1,0 +1,12 @@
+{
+  "name": "bf-sha256sum",
+  "commands": [{
+    "command_name": "bf-sha256sum",
+    "help": "compute SHA-256 hash",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "sha256sum.o"}],
+    "arguments": [
+      {"name": "target", "type": "string", "desc": "File path(s)"}
+    ]
+  }]
+}

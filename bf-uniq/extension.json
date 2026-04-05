@@ -1,0 +1,12 @@
+{
+  "name": "bf-uniq",
+  "commands": [{
+    "command_name": "bf-uniq",
+    "help": "remove duplicate adjacent lines",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "uniq.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-c] <file>"}
+    ]
+  }]
+}

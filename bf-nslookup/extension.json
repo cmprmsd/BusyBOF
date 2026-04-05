@@ -1,0 +1,12 @@
+{
+  "name": "bf-nslookup",
+  "commands": [{
+    "command_name": "bf-nslookup",
+    "help": "DNS lookup",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "nslookup.o"}],
+    "arguments": [
+      {"name": "host", "type": "string", "desc": "Hostname to resolve"}
+    ]
+  }]
+}

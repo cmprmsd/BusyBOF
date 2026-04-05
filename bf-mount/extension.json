@@ -1,0 +1,10 @@
+{
+  "name": "bf-mount",
+  "commands": [{
+    "command_name": "bf-mount",
+    "help": "list mount points",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "mount.o"}],
+    "arguments": []
+  }]
+}

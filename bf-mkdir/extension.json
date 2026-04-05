@@ -1,0 +1,12 @@
+{
+  "name": "bf-mkdir",
+  "commands": [{
+    "command_name": "bf-mkdir",
+    "help": "create directories",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "mkdir.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-p] <dir> [dir2 ...]"}
+    ]
+  }]
+}

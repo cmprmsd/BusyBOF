@@ -1,0 +1,13 @@
+{
+  "name": "bf-cut",
+  "commands": [{
+    "command_name": "bf-cut",
+    "help": "extract fields/columns",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "cut.o"}],
+    "arguments": [
+      {"name": "spec", "type": "string", "desc": "-d<delim> -f<fields> or -c<range>"},
+      {"name": "file", "type": "string", "desc": "Input file"}
+    ]
+  }]
+}

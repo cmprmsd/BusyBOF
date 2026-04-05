@@ -1,0 +1,12 @@
+{
+  "name": "bf-strings",
+  "commands": [{
+    "command_name": "bf-strings",
+    "help": "find printable strings",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "strings.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-n minlen] <file>"}
+    ]
+  }]
+}

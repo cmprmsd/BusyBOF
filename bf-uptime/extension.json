@@ -1,0 +1,10 @@
+{
+  "name": "bf-uptime",
+  "commands": [{
+    "command_name": "bf-uptime",
+    "help": "print system uptime",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "uptime.o"}],
+    "arguments": []
+  }]
+}

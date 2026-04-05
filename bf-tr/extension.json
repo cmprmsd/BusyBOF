@@ -1,0 +1,12 @@
+{
+  "name": "bf-tr",
+  "commands": [{
+    "command_name": "bf-tr",
+    "help": "translate/delete characters",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "tr.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "<set1> <set2> <file> or -d <set1> <file>"}
+    ]
+  }]
+}

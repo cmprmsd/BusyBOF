@@ -1,0 +1,7 @@
+{
+  "name": "bf-dmesg",
+  "commands": [{"command_name": "bf-dmesg", "help": "print kernel ring buffer", "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "dmesg.o"}],
+    "arguments": [{"name": "args", "type": "string", "desc": "[-n lines]", "optional": true}]
+  }]
+}

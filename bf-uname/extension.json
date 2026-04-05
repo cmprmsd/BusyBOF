@@ -1,0 +1,12 @@
+{
+  "name": "bf-uname",
+  "commands": [{
+    "command_name": "bf-uname",
+    "help": "print system information",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "uname.o"}],
+    "arguments": [
+      {"name": "flags", "type": "string", "desc": "[-a]", "optional": true}
+    ]
+  }]
+}

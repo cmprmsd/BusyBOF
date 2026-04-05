@@ -1,0 +1,12 @@
+{
+  "name": "bf-dirname",
+  "commands": [{
+    "command_name": "bf-dirname",
+    "help": "strip filename from path",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "dirname.o"}],
+    "arguments": [
+      {"name": "path", "type": "string", "desc": "File path"}
+    ]
+  }]
+}

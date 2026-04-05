@@ -1,0 +1,7 @@
+{
+  "name": "bf-rev",
+  "commands": [{"command_name": "bf-rev", "help": "reverse lines of a file", "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "rev.o"}],
+    "arguments": [{"name": "file", "type": "string", "desc": "Input file"}]
+  }]
+}

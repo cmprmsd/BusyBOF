@@ -1,0 +1,12 @@
+{
+  "name": "bf-kill",
+  "commands": [{
+    "command_name": "bf-kill",
+    "help": "send signal to process",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "kill.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-signal] <pid> [pid2 ...]"}
+    ]
+  }]
+}

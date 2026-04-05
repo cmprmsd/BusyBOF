@@ -1,0 +1,12 @@
+{
+  "name": "bf-rm",
+  "commands": [{
+    "command_name": "bf-rm",
+    "help": "remove files/directories",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "rm.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-rf] <path> [path2 ...]"}
+    ]
+  }]
+}

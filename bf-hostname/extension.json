@@ -1,0 +1,10 @@
+{
+  "name": "bf-hostname",
+  "commands": [{
+    "command_name": "bf-hostname",
+    "help": "print hostname",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "hostname.o"}],
+    "arguments": []
+  }]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "bf-paste",
+  "commands": [{
+    "command_name": "bf-paste",
+    "help": "merge lines of files",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "paste.o"}],
+    "arguments": [
+      {"name": "file1", "type": "string", "desc": "First file"},
+      {"name": "file2", "type": "string", "desc": "Second file(s)"}
+    ]
+  }]
+}

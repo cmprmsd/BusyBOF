@@ -1,0 +1,12 @@
+{
+  "name": "bf-ping",
+  "commands": [{
+    "command_name": "bf-ping",
+    "help": "test host reachability",
+    "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "ping.o"}],
+    "arguments": [
+      {"name": "args", "type": "string", "desc": "[-c count] <host>"}
+    ]
+  }]
+}

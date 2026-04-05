@@ -1,0 +1,7 @@
+{
+  "name": "bf-route",
+  "commands": [{"command_name": "bf-route", "help": "show routing table", "entrypoint": "go",
+    "files": [{"os": "linux", "arch": "amd64", "path": "route.o"}],
+    "arguments": []
+  }]
+}
