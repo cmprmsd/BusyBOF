@@ -26,13 +26,25 @@ void go(char *args, int alen) {
         if (*grpname) {
             struct group *gr = getgrnam(grpname);
             if (gr) gid = gr->gr_gid;
-            else gid = (gid_t)atoi(grpname);
+            else {
+                char *end;
+                long val = strtol(grpname, &end, 10);
+                if (*end != '\0' || end == grpname)
+                    BOF_ERROR("chown: invalid group '%s'", grpname);
+                gid = (gid_t)val;
+            }
         }
     }
     if (*owner) {
         struct passwd *pw = getpwnam(owner);
         if (pw) uid = pw->pw_uid;
-        else uid = (uid_t)atoi(owner);
+        else {
+            char *end;
+            long val = strtol(owner, &end, 10);
+            if (*end != '\0' || end == owner)
+                BOF_ERROR("chown: invalid user '%s'", owner);
+            uid = (uid_t)val;
+        }
     }
 
     /* Pipe input: apply ownership to each path from previous stage */

@@ -37,7 +37,7 @@ void go(char *args, int alen) {
     size_t offset = 0;
     size_t n;
 
-    while ((n = fread(buf, 1, 16, fp)) > 0) {
+    while ((n = fread(buf, 1, (limit > 0 && (size_t)limit - offset < 16) ? (size_t)limit - offset : 16, fp)) > 0) {
         if (limit > 0 && offset >= (size_t)limit) break;
 
         char line[128];

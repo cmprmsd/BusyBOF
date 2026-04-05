@@ -87,28 +87,35 @@ void go(char *args, int alen) {
     FILE *fp = fopen(outfile, "wb");
     if (!fp) { close(sock); BOF_ERROR("wget: cannot create '%s'", outfile); }
 
-    char buf[8192];
+    /*
+     * Accumulate data into hdr_buf until we find "\r\n\r\n".
+     * This handles the case where the header/body boundary is split
+     * across multiple recv() calls.
+     */
+    char hdr_buf[16384];
+    size_t hdr_len = 0;
     size_t total = 0;
     int header_done = 0;
     ssize_t n;
-    while ((n = recv(sock, buf, sizeof(buf) - 1, 0)) > 0) {
+    while ((n = recv(sock, header_done ? hdr_buf : hdr_buf + hdr_len,
+                     header_done ? sizeof(hdr_buf) : sizeof(hdr_buf) - hdr_len - 1, 0)) > 0) {
         if (!header_done) {
-            /* Null-terminate so strstr is safe */
-            buf[n] = '\0';
-            /* Find end of HTTP headers */
-            char *end = strstr(buf, "\r\n\r\n");
+            hdr_len += (size_t)n;
+            hdr_buf[hdr_len] = '\0';
+            char *end = strstr(hdr_buf, "\r\n\r\n");
             if (end) {
                 header_done = 1;
                 end += 4;
-                size_t body_len = (size_t)(n - (end - buf));
+                size_t body_len = hdr_len - (size_t)(end - hdr_buf);
                 if (body_len > 0) {
                     fwrite(end, 1, body_len, fp);
                     total += body_len;
                 }
-                continue;
             }
+            if (hdr_len >= sizeof(hdr_buf) - 1 && !header_done)
+                BOF_ERROR("wget: response headers too large");
         } else {
-            fwrite(buf, 1, (size_t)n, fp);
+            fwrite(hdr_buf, 1, (size_t)n, fp);
             total += (size_t)n;
         }
     }

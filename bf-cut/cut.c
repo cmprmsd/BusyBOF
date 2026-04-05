@@ -1,6 +1,6 @@
 /*
- * cut.c — BOF: extract fields/columns
- * Usage: cut -d<delim> -f<fields> <file>  OR  cut -c<range> <file>
+ * cut.c — BOF: extract fields by delimiter
+ * Usage: cut -d<delim> -f<field> <file>
  */
 #include "bofdefs.h"
 
@@ -10,7 +10,7 @@ void go(char *args, int alen) {
     char *spec = BeaconDataExtract(&parser, NULL);
     char *filepath = BeaconDataExtract(&parser, NULL);
     if (!spec || !*spec || !filepath || !*filepath)
-        BOF_ERROR("Usage: cut -d<delim> -f<fields> <file>");
+        BOF_ERROR("Usage: cut -d<delim> -f<field> <file>");
 
     char delim = '\t';
     int field = 0;
@@ -24,7 +24,7 @@ void go(char *args, int alen) {
     }
 
     if (field < 1)
-        BOF_ERROR("Usage: cut -d<delim> -f<N> <file>");
+        BOF_ERROR("Usage: cut -d<delim> -f<field> <file>");
 
     FILE *fp = fopen(filepath, "r");
     if (!fp) BOF_ERROR("cut: %s: %s", filepath, strerror(errno));

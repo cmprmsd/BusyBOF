@@ -5,18 +5,22 @@
 #include "bofdefs.h"
 
 void go(char *args, int alen) {
-    if (!args || alen <= 0) BOF_ERROR("Usage: paste <file1> <file2>");
+    if (!args || alen <= 0) BOF_ERROR("Usage: paste <file1> <file2> [file3 ...]");
 
     datap parser;
     BeaconDataParse(&parser, args, alen);
-    char *file1 = BeaconDataExtract(&parser, NULL);
-    char *file2 = BeaconDataExtract(&parser, NULL);
-    if (!file1 || !*file1 || !file2 || !*file2) BOF_ERROR("Usage: paste <file1> <file2>");
+    char *argv_str = BeaconDataExtract(&parser, NULL);
+    if (!argv_str || !*argv_str) BOF_ERROR("Usage: paste <file1> <file2> [file3 ...]");
 
     char *files[32];
     int nfiles = 0;
-    files[nfiles++] = file1;
-    files[nfiles++] = file2;
+    char *saveptr;
+    char *tok = strtok_r(argv_str, " ", &saveptr);
+    while (tok && nfiles < 32) {
+        files[nfiles++] = tok;
+        tok = strtok_r(NULL, " ", &saveptr);
+    }
+    if (nfiles < 2) BOF_ERROR("Usage: paste <file1> <file2> [file3 ...]");
 
     FILE *fps[32];
     for (int i = 0; i < nfiles; i++) {

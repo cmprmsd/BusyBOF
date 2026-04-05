@@ -36,17 +36,19 @@ void go(char *args, int alen) {
         const char *entry = &buf[i];
         size_t elen = strlen(entry);
 
-        /* Print char-by-char, skipping ESC [ ... m sequences */
-        for (size_t j = 0; j < elen; j++) {
+        /* Strip ANSI escape sequences into a clean buffer, then print once */
+        char clean[8192];
+        size_t ci = 0;
+        for (size_t j = 0; j < elen && ci < sizeof(clean) - 1; j++) {
             if (entry[j] == '\033' && j + 1 < elen && entry[j+1] == '[') {
-                /* Skip until 'm' or end */
                 j += 2;
                 while (j < elen && entry[j] != 'm') j++;
                 continue;
             }
-            BeaconPrintf(CALLBACK_OUTPUT, "%c", entry[j]);
+            clean[ci++] = entry[j];
         }
-        BeaconPrintf(CALLBACK_OUTPUT, "\n");
+        clean[ci] = '\0';
+        BeaconPrintf(CALLBACK_OUTPUT, "%s\n", clean);
 
         i += elen + 1;
     }

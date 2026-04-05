@@ -48,6 +48,11 @@ void go(char *args, int alen) {
     while (fgets(line, sizeof(line), fp)) {
         line[strcspn(line, "\n")] = '\0';
 
+        /* Keep a pristine copy for $0 (field splitting inserts NULs) */
+        char line0[8192];
+        strncpy(line0, line, sizeof(line0) - 1);
+        line0[sizeof(line0) - 1] = '\0';
+
         /* Split into fields */
         char *flds[256];
         int nf = 0;
@@ -64,7 +69,7 @@ void go(char *args, int alen) {
         for (int i = 0; i < nfields; i++) {
             if (i > 0) BeaconPrintf(CALLBACK_OUTPUT, " ");
             int idx = fields[i];
-            if (idx == 0) BeaconPrintf(CALLBACK_OUTPUT, "%s", line);
+            if (idx == 0) BeaconPrintf(CALLBACK_OUTPUT, "%s", line0);
             else if (idx > 0 && idx <= nf) BeaconPrintf(CALLBACK_OUTPUT, "%s", flds[idx - 1]);
         }
         if (print_nf && nf > 0) {
