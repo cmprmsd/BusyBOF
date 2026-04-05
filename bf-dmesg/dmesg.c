@@ -27,16 +27,14 @@ void go(char *args, int alen) {
     /*
      * /dev/kmsg is a streaming device — fgets blocks forever waiting for
      * new messages unless O_NONBLOCK is set.  Open non-blocking and use
-     * SEEK_DATA (offset 0) to start from the oldest buffered message.
+     * SEEK_SET (offset 0) to start from the oldest buffered message.
      */
     int kmsg_fd = open("/dev/kmsg", O_RDONLY | O_NONBLOCK);
     FILE *fp = NULL;
-    int is_kmsg = 0;
     if (kmsg_fd >= 0) {
-        lseek(kmsg_fd, 0, SEEK_DATA);
+        lseek(kmsg_fd, 0, SEEK_SET);
         fp = fdopen(kmsg_fd, "r");
         if (!fp) close(kmsg_fd);
-        else is_kmsg = 1;
     }
     if (!fp) {
         fp = fopen("/var/log/kern.log", "r");
